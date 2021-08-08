@@ -1,4 +1,5 @@
 const path = require('path')
+var webpack = require("webpack");
 const HtmlPlugin = require('html-webpack-plugin')
 
 const htmlPlugin = new HtmlPlugin({
@@ -15,7 +16,21 @@ module.exports = {
         // 表示输出文件的名称
         filename: 'bundle.js'
     },
-    plugins: [htmlPlugin],
+    module: {
+        rules: [
+            {
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader']
+            },
+            {
+                test: /\.less$/,
+                use: ['style-loader', 'css-loader', 'less-loader']
+            },
+        ]
+    },
+    plugins: [
+        htmlPlugin
+    ],
     devServer: {
         open: false,
         host: '127.0.0.1',

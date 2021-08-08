@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack serve"
+    "dev": "webpack serve",
+    "build": "webpack",
+    "dll": "webpack --config ./webpack.dll.config.js"
   },
   "keywords": [],
   "author": "",
@@ -13,7 +15,11 @@
     "jquery": "^3.6.0"
   },
   "devDependencies": {
+    "css-loader": "^6.2.0",
     "html-webpack-plugin": "^4.5.2",
+    "less": "^4.1.1",
+    "less-loader": "^10.0.1",
+    "style-loader": "^3.2.1",
     "webpack": "^5.5.1",
     "webpack-cli": "^4.7.2",
     "webpack-dev-server": "^3.11.0"
