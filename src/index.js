@@ -1,6 +1,6 @@
 import $ from 'jquery'
 
 $(function(){
-    $('li:odd').css('backgroundColor', 'red')
-    $('li:even').css('backgroundColor', 'yellow')
+    $('li:odd').css('backgroundColor', 'pink')
+    $('li:even').css('backgroundColor', 'green')
 })
