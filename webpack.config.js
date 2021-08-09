@@ -17,6 +17,7 @@ function resolve (dir) {
 
 module.exports = {
     mode: 'development', // development | production
+    devtool: 'eval-source-map',
     entry: path.join(__dirname, './src/index.js'),
     output: {
         // 表示输出文件的存放路径
