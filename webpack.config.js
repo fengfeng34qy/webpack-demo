@@ -5,10 +5,15 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 const os = require('os');
+console.log('length', os.cpus().length)
 const HappyPack = require('happypack');
 const happyThreadPool = HappyPack.ThreadPool({
     size: os.cpus().length
 });
+
+function resolve (dir) {
+    return path.join(__dirname, '..', dir)
+}
 
 module.exports = {
     mode: 'development', // development | production
@@ -19,6 +24,15 @@ module.exports = {
         // 表示输出文件的名称
         filename: 'bundle.js'
     },
+    resolve: {
+        modules: ["node_modules"],
+        extensions: ['.js', '.vue', '.json'],
+        alias: {
+            '@': resolve('.'),
+            '$': 'jquery',
+            'vue$': 'vue/dist/vue.esm.js',
+        }
+    },
     module: {
         rules: [
             {
@@ -28,6 +42,11 @@ module.exports = {
             {
                 test: /\.less$/,
                 use: 'happypack/loader?id=styles',
+                // use: ['style-loader', 'css-loader', 'less-loader']
+            },
+            {
+                test: /test\.js$/,
+                use: './test.js',
                 // use: ['style-loader', 'css-loader', 'less-loader']
             },
             // {
